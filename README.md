@@ -1,3 +1,3 @@
 # learning-go
 
-learning go wiht Nico
+learning go with Nico
