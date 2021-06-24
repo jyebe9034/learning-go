@@ -1,6 +1,9 @@
 package accounts
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // Accounts struct
 type Account struct {
@@ -32,4 +35,19 @@ func (a *Account) Withdraw(amount int) error {
 	}
 	a.balance -= amount
 	return nil
+}
+
+// Change owner of the account
+func (a *Account) ChangeOwner(newOwner string) {
+	a.owner = newOwner
+}
+
+// Onwer of the account
+func (a Account) Owner() string {
+	return a.owner
+}
+
+// Go가 내부적으로 호출하는 메서드! 우리가 원하는 대로 변경 가능하긴 함.
+func (a Account) String() string {
+	return fmt.Sprint(a.Owner(), "'s account.\nHas: ", a.Balnace())
 }
